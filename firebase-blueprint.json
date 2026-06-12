@@ -1,0 +1,145 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information containing contact details and tour preferences",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "User's display name"
+        },
+        "email": {
+          "type": "string",
+          "description": "User's verified email address"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "User's contact phone number"
+        },
+        "homeCity": {
+          "type": "string",
+          "description": "User's home city"
+        },
+        "tripRole": {
+          "type": "string",
+          "description": "User's role in the tour group"
+        },
+        "preferredCurrency": {
+          "type": "string",
+          "description": "User's preferred currency (BDT or USD)",
+          "enum": ["BDT", "USD"]
+        },
+        "notes": {
+          "type": "string",
+          "description": "Aesthetic travel notes"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "description": "UTC timestamp of last update"
+        }
+      },
+      "required": ["displayName", "email"]
+    },
+    "UserTripPlan": {
+      "title": "UserTripPlan",
+      "description": "Trip details for cox bazar voyage 2026 plan",
+      "type": "object",
+      "properties": {
+        "groupSize": {
+          "type": "integer",
+          "description": "Size of the travelling squad"
+        },
+        "members": {
+          "type": "array",
+          "description": "List of active squad members"
+        },
+        "selectedHotelId": {
+          "type": "string",
+          "description": "ID of the currently selected hotel"
+        },
+        "shortlistedIds": {
+          "type": "array",
+          "description": "IDs of shortlisted hotels"
+        },
+        "compareHotelIds": {
+          "type": "array",
+          "description": "IDs of hotels lined up for comparison"
+        },
+        "oneWayBusFare": {
+          "type": "number",
+          "description": "Per head one-way bus fare in BDT"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Target UI currency",
+          "enum": ["BDT", "USD"]
+        },
+        "packingItems": {
+          "type": "array",
+          "description": "Custom checklist items checklist status"
+        },
+        "customTimeline": {
+          "type": "array",
+          "description": "Trip itinerary details list"
+        },
+        "recentSearches": {
+          "type": "array",
+          "description": "A list of recent hotel search keywords"
+        },
+        "ticketAssignments": {
+          "type": "object",
+          "description": "Seat assignment dictionary mapping member ID to ticket/seat number"
+        },
+        "memberSplits": {
+          "type": "array",
+          "description": "Cost splitting balances"
+        },
+        "bookingDocumentsMetadata": {
+          "type": "array",
+          "description": "Array of files mapping Google Drive credentials"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "description": "Last updated date"
+        }
+      }
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Google Drive and Firestore backed trip gallery memory",
+      "type": "object",
+      "properties": {
+        "driveFileId": { "type": "string" },
+        "name": { "type": "string" },
+        "originalName": { "type": "string" },
+        "type": { "type": "string", "enum": ["image", "video"] },
+        "mimeType": { "type": "string" },
+        "size": { "type": "integer" },
+        "thumbnailUrl": { "type": "string" },
+        "previewUrl": { "type": "string" },
+        "downloadUrl": { "type": "string" },
+        "webViewLink": { "type": "string" },
+        "createdTime": { "type": "string" },
+        "uploadedByUid": { "type": "string" },
+        "uploadedByName": { "type": "string" },
+        "uploadedByEmail": { "type": "string" }
+      },
+      "required": ["driveFileId", "name", "type", "mimeType", "uploadedByUid"]
+    }
+  },
+  "firestore": {
+    "users/{userId}/profile/{profileId}": {
+      "schema": "UserProfile",
+      "description": "Store individual travel user profiles"
+    },
+    "users/{userId}/tripPlans/{planId}": {
+      "schema": "UserTripPlan",
+      "description": "Store users' active travel plans details"
+    },
+    "tripGallery/{galleryId}/media/{mediaId}": {
+      "schema": "GalleryItem",
+      "description": "Shared trip gallery items"
+    }
+  }
+}

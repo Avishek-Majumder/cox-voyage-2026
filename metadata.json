@@ -1,0 +1,6 @@
+{
+  "name": "Cox Voyage 2026",
+  "description": "An interactive travel budget manager and squad planner for the Cox's Bazar Trip 2026.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

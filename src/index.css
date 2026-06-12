@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --app-bg: #f6f8fb;
+  --card-bg: #ffffff;
+  --text-primary: #102033;
+  --text-secondary: #516173;
+  --muted-bg: #eef3f8;
+  --border: #dbe4ee;
+  --accent: #006ce4;
+  --accent-soft: #eaf4ff;
+  --warning: #f97316;
+  --success: #10b981;
+  --danger: #ef4444;
+}
+
+.dark {
+  --app-bg: #07111f;
+  --card-bg: #0f1b2d;
+  --text-primary: #f5f8fc;
+  --text-secondary: #a8b3c4;
+  --muted-bg: #17263a;
+  --border: #26364d;
+  --accent: #4ea1ff;
+  --accent-soft: #102a47;
+  --warning: #fb923c;
+  --success: #34d399;
+  --danger: #f87171;
+}
+
+html, body, #root {
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--app-bg);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Redefine Sky colors to Cox Voyage High Density Blues & Indigo */
+  --color-sky-50: #F0F6FC;
+  --color-sky-100: #E1EEFB;
+  --color-sky-150: #C2DCFA;
+  --color-sky-200: #B1D6F7;
+  --color-sky-300: #6AACF2;
+  --color-sky-450: #308AEE;
+  --color-sky-500: #006CE4; /* COX VOYAGE HIGH DENSITY BRAND BLUE */
+  --color-sky-600: #0052BE;
+  --color-sky-700: #003B95; /* BOOKING DEEP INDIGO */
+  --color-sky-800: #002D72;
+  --color-sky-900: #001F4F;
+
+  --color-indigo-900: #001A44;
+  --color-indigo-150: #D8E6F8;
+  --color-indigo-200: #B6D2FA;
+
+  --color-slate-50: #F4F7FA;
+  --color-slate-100: #EAEEF3;
+  --color-slate-200: #DCE3EA;
+
+  --color-orange-500: #FF6A00; /* VIBRANT WALKING ACCENT */
+  --color-orange-600: #E05300;
+
+  /* Design Token colors mapped to standard classes */
+  --color-app-bg: var(--app-bg);
+  --color-card-bg: var(--card-bg);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-muted-bg: var(--muted-bg);
+  --color-border-token: var(--border);
+  --color-accent-token: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+}
+
+/* Custom scrollbars for a premium app feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 165, 233, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 165, 233, 0.4);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
